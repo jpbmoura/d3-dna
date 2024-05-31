@@ -16,8 +16,22 @@ import Chart from "react-google-charts";
 export default function Home() {
   const scoreInitalValue = {
     average: 0,
-    min: 0,
-    max: 0,
+    leaderAverage: 0,
+    notLeaderAverage: 0,
+    asLeader: {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+    },
+    asNotLeader: {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+    },
     scores: {
       "1": 0,
       "2": 0,
@@ -61,6 +75,8 @@ export default function Home() {
   React.useEffect(() => {
     prepareDataForChart();
   }, []);
+
+  console.log(freedomOfSpeechData);
   return (
     <main className="max-w-5xl mx-auto pt-12 px-8 lg:px-0">
       <header className="flex justify-between items-center">
@@ -71,43 +87,105 @@ export default function Home() {
       </header>
 
       <section className="my-8 space-y-2">
-        <span className="underline">Relações</span>
+        <h2 className="underline text-lg">Relações</h2>
 
-        <div className="h-[400px] w-full">
-          <BarChart
-            data={[
-              {
-                key: "Liberdade de Expressão",
-                value: freedomOfSpeechData.average.toFixed(2),
-              },
-              {
-                key: "Segurança Psicológica",
-                value: psychologicalSafetyData.average.toFixed(2),
-              },
-              {
-                key: "Confiança",
-                value: reliabilityData.average.toFixed(2),
-              },
-              {
-                key: "Aprendizado contínuo",
-                value: continuousLearningData.average.toFixed(2),
-              },
-              {
-                key: "Autonomia",
-                value: autonomyData.average.toFixed(2),
-              },
-              {
-                key: "Integridade e Coerência",
-                value: integrityAndCoherenceData.average.toFixed(2),
-              },
-              {
-                key: "Qualidade de vida",
-                value: qualityOfLife.average.toFixed(2),
-              },
-            ]}
-            keys={["value"]}
-            index="key"
-          />
+        <div>
+          <span className="text-neutral-500">Média de Votos x Tipo</span>
+          <div className="h-[400px] w-full">
+            <BarChart
+              data={[
+                {
+                  key: "Liberdade de Expressão",
+                  value: freedomOfSpeechData.average.toFixed(2),
+                },
+                {
+                  key: "Segurança Psicológica",
+                  value: psychologicalSafetyData.average.toFixed(2),
+                },
+                {
+                  key: "Confiança",
+                  value: reliabilityData.average.toFixed(2),
+                },
+                {
+                  key: "Aprendizado contínuo",
+                  value: continuousLearningData.average.toFixed(2),
+                },
+                {
+                  key: "Autonomia",
+                  value: autonomyData.average.toFixed(2),
+                },
+                {
+                  key: "Integridade e Coerência",
+                  value: integrityAndCoherenceData.average.toFixed(2),
+                },
+                {
+                  key: "Qualidade de vida",
+                  value: qualityOfLife.average.toFixed(2),
+                },
+              ]}
+              keys={["value"]}
+              index="key"
+            />
+          </div>
+        </div>
+
+        <div>
+          <span className="text-neutral-500">
+            Média de Votos x Tipo (Média Lider e Não Lider)
+          </span>
+          <div className="h-[400px] w-full">
+            <BarChart
+              data={[
+                {
+                  key: "Liberdade de Expressão",
+                  average: freedomOfSpeechData.average.toFixed(2),
+                  leader: freedomOfSpeechData.leaderAverage.toFixed(2),
+                  isNotLeader: freedomOfSpeechData.notLeaderAverage.toFixed(2),
+                },
+                {
+                  key: "Segurança Psicológica",
+                  average: psychologicalSafetyData.average.toFixed(2),
+                  leader: psychologicalSafetyData.leaderAverage.toFixed(2),
+                  isNotLeader:
+                    psychologicalSafetyData.notLeaderAverage.toFixed(2),
+                },
+                {
+                  key: "Confiança",
+                  average: reliabilityData.average.toFixed(2),
+                  leader: reliabilityData.leaderAverage.toFixed(2),
+                  isNotLeader: reliabilityData.notLeaderAverage.toFixed(2),
+                },
+                {
+                  key: "Aprendizado contínuo",
+                  average: continuousLearningData.average.toFixed(2),
+                  leader: continuousLearningData.leaderAverage.toFixed(2),
+                  isNotLeader:
+                    continuousLearningData.notLeaderAverage.toFixed(2),
+                },
+                {
+                  key: "Autonomia",
+                  average: autonomyData.average.toFixed(2),
+                  leader: autonomyData.leaderAverage.toFixed(2),
+                  isNotLeader: autonomyData.notLeaderAverage.toFixed(2),
+                },
+                {
+                  key: "Integridade e Coerência",
+                  average: integrityAndCoherenceData.average.toFixed(2),
+                  leader: integrityAndCoherenceData.leaderAverage.toFixed(2),
+                  isNotLeader:
+                    integrityAndCoherenceData.notLeaderAverage.toFixed(2),
+                },
+                {
+                  key: "Qualidade de vida",
+                  average: qualityOfLife.average.toFixed(2),
+                  leader: qualityOfLife.leaderAverage.toFixed(2),
+                  isNotLeader: qualityOfLife.notLeaderAverage.toFixed(2),
+                },
+              ]}
+              keys={["average", "leader", "isNotLeader"]}
+              index="key"
+            />
+          </div>
         </div>
 
         <Accordion type="single" collapsible>
