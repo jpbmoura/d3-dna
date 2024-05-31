@@ -18,6 +18,8 @@ export default function Home() {
     average: 0,
     leaderAverage: 0,
     notLeaderAverage: 0,
+    positiveVotes: 0,
+    negativeVotes: 0,
     asLeader: {
       "1": 0,
       "2": 0,
@@ -184,6 +186,58 @@ export default function Home() {
               ]}
               keys={["average", "leader", "isNotLeader"]}
               index="key"
+              type="grouped"
+            />
+          </div>
+        </div>
+
+        <div>
+          <span className="text-neutral-500">
+            Favorabilidade (Votos Positivos x Votos Negativos)
+          </span>
+          <div className="h-[400px] w-full">
+            <BarChart
+              data={[
+                {
+                  key: "Liberdade de Expressão",
+                  positiveVotes: freedomOfSpeechData.positiveVotes,
+                  negativeVotes: freedomOfSpeechData.negativeVotes,
+                },
+                {
+                  key: "Segurança Psicológica",
+                  positiveVotes: psychologicalSafetyData.positiveVotes,
+                  negativeVotes: psychologicalSafetyData.negativeVotes,
+                },
+                {
+                  key: "Confiança",
+                  positiveVotes: reliabilityData.positiveVotes,
+                  negativeVotes: reliabilityData.negativeVotes,
+                },
+                {
+                  key: "Aprendizado contínuo",
+                  positiveVotes: continuousLearningData.positiveVotes,
+                  negativeVotes: continuousLearningData.negativeVotes,
+                },
+                {
+                  key: "Autonomia",
+                  positiveVotes: autonomyData.positiveVotes,
+                  negativeVotes: autonomyData.negativeVotes,
+                },
+                {
+                  key: "Integridade e Coerência",
+                  positiveVotes: integrityAndCoherenceData.positiveVotes,
+                  negativeVotes: integrityAndCoherenceData.negativeVotes,
+                },
+                {
+                  key: "Qualidade de vida",
+                  positiveVotes: qualityOfLife.positiveVotes,
+                  negativeVotes: qualityOfLife.negativeVotes,
+                },
+              ]}
+              keys={["positiveVotes", "negativeVotes"]}
+              color={["#22c55e", "#ef4444"]}
+              index="key"
+              type="stacked"
             />
           </div>
         </div>

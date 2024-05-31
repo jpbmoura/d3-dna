@@ -6,6 +6,9 @@ export const formatScores = (data: any, prevState: any, field: string) => {
     (item: any) => item["Você possui papel de liderança na Going2?"] === "Não"
   );
 
+  const positiveVotes = data.filter((item: any) => item[field] > 3);
+  const negativeVotes = data.filter((item: any) => item[field] <= 3);
+
   return {
     average:
       data.reduce((acc: number, item: any) => acc + item[field], 0) /
@@ -16,6 +19,8 @@ export const formatScores = (data: any, prevState: any, field: string) => {
     notLeaderAverage:
       isNotLeader.reduce((acc: number, item: any) => acc + item[field], 0) /
       isNotLeader.length,
+    positiveVotes: positiveVotes.length,
+    negativeVotes: negativeVotes.length,
     asLeader: {
       "1": data.filter(
         (item: any) =>
