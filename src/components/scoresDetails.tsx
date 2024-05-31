@@ -16,109 +16,221 @@ const ScoresDetails = ({
   };
 }) => {
   return (
-    <div className="grid grid-cols-1 w-full md:grid-cols-2 lg:grid-cols-3 gap-4">
-      <div className="border p-4 space-y-4">
+    <div className="grid grid-cols-1 w-full md:grid-cols-2 lg:grid-cols-3 gap-2">
+      <div className="w-full h-[300px] border p-4">
+        <span className="text-neutral-500">Liberdade de Expressão</span>
         <BarChart
-          title="Liberdade de Expressão"
-          color="#881337"
           data={[
-            ["Notas", "Votos"],
-            ["1", data.freedomOfSpeechData.scores["1"]],
-            ["2", data.freedomOfSpeechData.scores["2"]],
-            ["3", data.freedomOfSpeechData.scores["3"]],
-            ["4", data.freedomOfSpeechData.scores["4"]],
-            ["5", data.freedomOfSpeechData.scores["5"]],
+            {
+              Notas: "1",
+              Votos: data.freedomOfSpeechData.scores["1"],
+            },
+            {
+              Notas: "2",
+              Votos: data.freedomOfSpeechData.scores["2"],
+            },
+            {
+              Notas: "3",
+              Votos: data.freedomOfSpeechData.scores["3"],
+            },
+            {
+              Notas: "4",
+              Votos: data.freedomOfSpeechData.scores["4"],
+            },
+            {
+              Notas: "5",
+              Votos: data.freedomOfSpeechData.scores["5"],
+            },
           ]}
+          keys={["Votos"]}
+          index="Notas"
+          legend="Votos"
         />
       </div>
 
-      <div className="border p-4 space-y-4">
+      <div className="w-full h-[300px] border p-4">
+        <span className="text-neutral-500">Segurança Psicológica</span>
         <BarChart
-          title="Segurança Psicológica"
-          color="#701a75"
           data={[
-            ["Notas", "Votos"],
-            ["1", data.psychologicalSafetyData.scores["1"]],
-            ["2", data.psychologicalSafetyData.scores["2"]],
-            ["3", data.psychologicalSafetyData.scores["3"]],
-            ["4", data.psychologicalSafetyData.scores["4"]],
-            ["5", data.psychologicalSafetyData.scores["5"]],
+            {
+              Notas: "1",
+              Votos: data.psychologicalSafetyData.scores["1"],
+            },
+            {
+              Notas: "2",
+              Votos: data.psychologicalSafetyData.scores["2"],
+            },
+            {
+              Notas: "3",
+              Votos: data.psychologicalSafetyData.scores["3"],
+            },
+            {
+              Notas: "4",
+              Votos: data.psychologicalSafetyData.scores["4"],
+            },
+            {
+              Notas: "5",
+              Votos: data.psychologicalSafetyData.scores["5"],
+            },
           ]}
+          keys={["Votos"]}
+          index="Notas"
+          legend="Votos"
         />
       </div>
 
-      <div className="border p-4 space-y-4">
+      <div className="w-full h-[300px] border p-4">
+        <span className="text-neutral-500">Confiabilidade</span>
         <BarChart
-          title="Confiabilidade"
-          color="#312e81"
           data={[
-            ["Notas", "Votos"],
-            ["1", data.reliabilityData.scores["1"]],
-            ["2", data.reliabilityData.scores["2"]],
-            ["3", data.reliabilityData.scores["3"]],
-            ["4", data.reliabilityData.scores["4"]],
-            ["5", data.reliabilityData.scores["5"]],
+            {
+              Notas: "1",
+              Votos: data.reliabilityData.scores["1"],
+            },
+            {
+              Notas: "2",
+              Votos: data.reliabilityData.scores["2"],
+            },
+            {
+              Notas: "3",
+              Votos: data.reliabilityData.scores["3"],
+            },
+            {
+              Notas: "4",
+              Votos: data.reliabilityData.scores["4"],
+            },
+            {
+              Notas: "5",
+              Votos: data.reliabilityData.scores["5"],
+            },
           ]}
+          keys={["Votos"]}
+          index="Notas"
+          legend="Votos"
         />
       </div>
 
-      <div className="border p-4 space-y-4">
+      <div className="w-full h-[300px] border p-4">
+        <span className="text-neutral-500">Aprendizado Contínuo</span>
         <BarChart
-          title="Aprendizado contínuo"
-          color="#0c4a6e"
           data={[
-            ["Notas", "Votos"],
-            ["1", data.continuousLearningData.scores["1"]],
-            ["2", data.continuousLearningData.scores["2"]],
-            ["3", data.continuousLearningData.scores["3"]],
-            ["4", data.continuousLearningData.scores["4"]],
-            ["5", data.continuousLearningData.scores["5"]],
+            {
+              Notas: "1",
+              Votos: data.continuousLearningData.scores["1"],
+            },
+            {
+              Notas: "2",
+              Votos: data.continuousLearningData.scores["2"],
+            },
+            {
+              Notas: "3",
+              Votos: data.continuousLearningData.scores["3"],
+            },
+            {
+              Notas: "4",
+              Votos: data.continuousLearningData.scores["4"],
+            },
+            {
+              Notas: "5",
+              Votos: data.continuousLearningData.scores["5"],
+            },
           ]}
+          keys={["Votos"]}
+          index="Notas"
+          legend="Votos"
         />
       </div>
 
-      <div className="border p-4 space-y-4">
+      <div className="w-full h-[300px] border p-4">
+        <span className="text-neutral-500">Autonomia</span>
         <BarChart
-          title="Autonomia"
-          color="#134e4a"
           data={[
-            ["Notas", "Votos"],
-            ["1", data.autonomyData.scores["1"]],
-            ["2", data.autonomyData.scores["2"]],
-            ["3", data.autonomyData.scores["3"]],
-            ["4", data.autonomyData.scores["4"]],
-            ["5", data.autonomyData.scores["5"]],
+            {
+              Notas: "1",
+              Votos: data.autonomyData.scores["1"],
+            },
+            {
+              Notas: "2",
+              Votos: data.autonomyData.scores["2"],
+            },
+            {
+              Notas: "3",
+              Votos: data.autonomyData.scores["3"],
+            },
+            {
+              Notas: "4",
+              Votos: data.autonomyData.scores["4"],
+            },
+            {
+              Notas: "5",
+              Votos: data.autonomyData.scores["5"],
+            },
           ]}
+          keys={["Votos"]}
+          index="Notas"
+          legend="Votos"
         />
       </div>
 
-      <div className="border p-4 space-y-4">
+      <div className="w-full h-[300px] border p-4">
+        <span className="text-neutral-500">Integridade e Coerência</span>
         <BarChart
-          title="Integridade e Coerência"
-          color="#064e3b"
           data={[
-            ["Notas", "Votos"],
-            ["1", data.integrityAndCoherenceData.scores["1"]],
-            ["2", data.integrityAndCoherenceData.scores["2"]],
-            ["3", data.integrityAndCoherenceData.scores["3"]],
-            ["4", data.integrityAndCoherenceData.scores["4"]],
-            ["5", data.integrityAndCoherenceData.scores["5"]],
+            {
+              Notas: "1",
+              Votos: data.integrityAndCoherenceData.scores["1"],
+            },
+            {
+              Notas: "2",
+              Votos: data.integrityAndCoherenceData.scores["2"],
+            },
+            {
+              Notas: "3",
+              Votos: data.integrityAndCoherenceData.scores["3"],
+            },
+            {
+              Notas: "4",
+              Votos: data.integrityAndCoherenceData.scores["4"],
+            },
+            {
+              Notas: "5",
+              Votos: data.integrityAndCoherenceData.scores["5"],
+            },
           ]}
+          keys={["Votos"]}
+          index="Notas"
+          legend="Votos"
         />
       </div>
 
-      <div className="border p-4 space-y-4">
+      <div className="w-full h-[300px] border p-4">
+        <span className="text-neutral-500">Qualidade de Vida</span>
         <BarChart
-          title="Qualidade de vida"
-          color="#78350f"
           data={[
-            ["Notas", "Votos"],
-            ["1", data.qualityOfLife.scores["1"]],
-            ["2", data.qualityOfLife.scores["2"]],
-            ["3", data.qualityOfLife.scores["3"]],
-            ["4", data.qualityOfLife.scores["4"]],
-            ["5", data.qualityOfLife.scores["5"]],
+            {
+              Notas: "1",
+              Votos: data.qualityOfLife.scores["1"],
+            },
+            {
+              Notas: "2",
+              Votos: data.qualityOfLife.scores["2"],
+            },
+            {
+              Notas: "3",
+              Votos: data.qualityOfLife.scores["3"],
+            },
+            {
+              Notas: "4",
+              Votos: data.qualityOfLife.scores["4"],
+            },
+            {
+              Notas: "5",
+              Votos: data.qualityOfLife.scores["5"],
+            },
           ]}
+          keys={["Votos"]}
+          index="Notas"
+          legend="Votos"
         />
       </div>
     </div>

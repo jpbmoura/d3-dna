@@ -1,27 +1,40 @@
 "use client";
 
-import Chart from "react-google-charts";
+import { ResponsiveBar } from "@nivo/bar";
 
 const BarChart = ({
   data,
+  keys,
+  index,
   color,
-  title,
+  legend,
 }: {
   data: any;
+  keys: string[];
+  index: string;
   color?: string;
-  title: string;
+  legend?: string;
 }) => {
   return (
-    <Chart
-      chartType="Bar"
+    <ResponsiveBar
       data={data}
-      width="100%"
-      height="200px"
-      legendToggle
-      options={{
-        chart: { title: title },
-        legend: { position: "none" },
-        colors: [color || "#3B82F6"],
+      keys={keys}
+      indexBy={index}
+      margin={{ top: 50, right: 50, bottom: 50, left: 50 }}
+      padding={0.4}
+      valueScale={{ type: "linear" }}
+      colors={color}
+      animate={true}
+      enableLabel={false}
+      axisTop={null}
+      axisRight={null}
+      axisLeft={{
+        tickSize: 5,
+        tickPadding: 5,
+        tickRotation: 0,
+        legend: legend,
+        legendPosition: "middle",
+        legendOffset: -40,
       }}
     />
   );

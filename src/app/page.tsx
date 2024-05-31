@@ -1,6 +1,7 @@
 "use client";
 
 import ScoresDetails from "@/components/scoresDetails";
+import BarChart from "@/components/shared/barChart";
 import {
   Accordion,
   AccordionContent,
@@ -8,6 +9,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { formatScores } from "@/helpers/functions/formatScores";
+import { ResponsiveBar } from "@nivo/bar";
 import React from "react";
 import Chart from "react-google-charts";
 
@@ -71,27 +73,40 @@ export default function Home() {
       <section className="my-8 space-y-2">
         <span className="underline">Relações</span>
 
-        <div className="">
-          <Chart
-            chartType="Bar"
+        <div className="h-[400px] w-full">
+          <BarChart
             data={[
-              ["Avaliação", "Média"],
-              ["Liberdade de Expressão", freedomOfSpeechData.average],
-              ["Segurança Psicológica", psychologicalSafetyData.average],
-              ["Confiança", reliabilityData.average],
-              ["Aprendizado contínuo", continuousLearningData.average],
-              ["Autonomia", autonomyData.average],
-              ["Integridade e Coerência", integrityAndCoherenceData.average],
-              ["Qualidade de Vida", qualityOfLife.average],
+              {
+                key: "Liberdade de Expressão",
+                value: freedomOfSpeechData.average.toFixed(2),
+              },
+              {
+                key: "Segurança Psicológica",
+                value: psychologicalSafetyData.average.toFixed(2),
+              },
+              {
+                key: "Confiança",
+                value: reliabilityData.average.toFixed(2),
+              },
+              {
+                key: "Aprendizado contínuo",
+                value: continuousLearningData.average.toFixed(2),
+              },
+              {
+                key: "Autonomia",
+                value: autonomyData.average.toFixed(2),
+              },
+              {
+                key: "Integridade e Coerência",
+                value: integrityAndCoherenceData.average.toFixed(2),
+              },
+              {
+                key: "Qualidade de vida",
+                value: qualityOfLife.average.toFixed(2),
+              },
             ]}
-            width="100%"
-            height="250px"
-            legendToggle
-            options={{
-              chart: { title: "Média das Notas Recebidas" },
-              legend: { position: "none" },
-              colors: ["#581c87"],
-            }}
+            keys={["value"]}
+            index="key"
           />
         </div>
 
@@ -117,6 +132,37 @@ export default function Home() {
     </main>
   );
 }
+
+const data2 = [
+  {
+    day: "Monday",
+    degress: 59,
+  },
+  {
+    day: "Tuesday",
+    degress: 61,
+  },
+  {
+    day: "Wednesday",
+    degress: 55,
+  },
+  {
+    day: "Thursday",
+    degress: 78,
+  },
+  {
+    day: "Friday",
+    degress: 71,
+  },
+  {
+    day: "Saturday",
+    degress: 56,
+  },
+  {
+    day: "Sunday",
+    degress: 67,
+  },
+];
 
 const data = [
   {
@@ -432,3 +478,7 @@ const data = [
     "Qualidade de vida": 1,
   },
 ];
+
+const formatedData = data.filter(
+  (item) => item["Liberdade de Expressão"] === 5
+);
