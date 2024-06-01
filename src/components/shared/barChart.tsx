@@ -9,6 +9,7 @@ const BarChart = ({
   color,
   legend,
   type,
+  format,
 }: {
   data: any;
   keys: string[];
@@ -16,6 +17,7 @@ const BarChart = ({
   color?: string | string[];
   legend?: string;
   type?: "grouped" | "stacked";
+  format?: any;
 }) => {
   return (
     <ResponsiveBar
@@ -26,6 +28,7 @@ const BarChart = ({
       padding={0.4}
       valueScale={{ type: "linear" }}
       groupMode={type || "grouped"}
+      valueFormat={format || undefined}
       colors={color}
       animate={true}
       axisTop={null}

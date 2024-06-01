@@ -233,6 +233,54 @@ const ScoresDetails = ({
           legend="Votos"
         />
       </div>
+
+      <div className="w-full h-[300px] border p-4">
+        <span className="text-neutral-500">Favorabilidade</span>
+        <BarChart
+          data={[
+            {
+              key: "Liberdade de Expressão",
+              positiveVotes: data.freedomOfSpeechData.positiveVotes,
+              negativeVotes: data.freedomOfSpeechData.negativeVotes,
+            },
+            {
+              key: "Segurança Psicológica",
+              positiveVotes: data.psychologicalSafetyData.positiveVotes,
+              negativeVotes: data.psychologicalSafetyData.negativeVotes,
+            },
+            {
+              key: "Confiabilidade",
+              positiveVotes: data.reliabilityData.positiveVotes,
+              negativeVotes: data.reliabilityData.negativeVotes,
+            },
+            {
+              key: "Aprendizado Contínuo",
+              positiveVotes: data.continuousLearningData.positiveVotes,
+              negativeVotes: data.continuousLearningData.negativeVotes,
+            },
+            {
+              key: "Autonomia",
+              positiveVotes: data.autonomyData.positiveVotes,
+              negativeVotes: data.autonomyData.negativeVotes,
+            },
+            {
+              key: "Integridade e Coerência",
+              positiveVotes: data.integrityAndCoherenceData.positiveVotes,
+              negativeVotes: data.integrityAndCoherenceData.negativeVotes,
+            },
+            {
+              key: "Qualidade de Vida",
+              positiveVotes: data.qualityOfLife.positiveVotes,
+              negativeVotes: data.qualityOfLife.negativeVotes,
+            },
+          ]}
+          keys={["negativeVotes", "positiveVotes"]}
+          color={["#fd7f6f", "#b2e061"]}
+          index="key"
+          legend="Votos"
+          type="stacked"
+        />
+      </div>
     </div>
   );
 };

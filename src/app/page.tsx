@@ -16,30 +16,41 @@ import Chart from "react-google-charts";
 export default function Home() {
   const scoreInitalValue = {
     average: 0,
-    leaderAverage: 0,
-    notLeaderAverage: 0,
     positiveVotes: 0,
     negativeVotes: 0,
-    asLeader: {
-      "1": 0,
-      "2": 0,
-      "3": 0,
-      "4": 0,
-      "5": 0,
-    },
-    asNotLeader: {
-      "1": 0,
-      "2": 0,
-      "3": 0,
-      "4": 0,
-      "5": 0,
-    },
+    totalOfVotes: 0,
     scores: {
       "1": 0,
       "2": 0,
       "3": 0,
       "4": 0,
       "5": 0,
+    },
+    asLeader: {
+      average: 0,
+      totalOfVotes: 0,
+      positiveVotes: 0,
+      negativeVotes: 0,
+      scores: {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+      },
+    },
+    asNotLeader: {
+      average: 0,
+      totalOfVotes: 0,
+      positiveVotes: 0,
+      negativeVotes: 0,
+      scores: {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+      },
     },
   };
 
@@ -78,9 +89,8 @@ export default function Home() {
     prepareDataForChart();
   }, []);
 
-  console.log(freedomOfSpeechData);
   return (
-    <main className="max-w-5xl mx-auto pt-12 px-8 lg:px-0">
+    <main className="max-w-6xl mx-auto pt-12 px-8 lg:px-0">
       <header className="flex justify-between items-center">
         <h1 className="font-bold text-xl">D3 - DNA</h1>
         <span className="italic text-neutral-500 text-sm">
@@ -127,6 +137,7 @@ export default function Home() {
               ]}
               keys={["value"]}
               index="key"
+              color={"#8bd3c7"}
             />
           </div>
         </div>
@@ -141,52 +152,54 @@ export default function Home() {
                 {
                   key: "Liberdade de Expressão",
                   average: freedomOfSpeechData.average.toFixed(2),
-                  leader: freedomOfSpeechData.leaderAverage.toFixed(2),
-                  isNotLeader: freedomOfSpeechData.notLeaderAverage.toFixed(2),
+                  leader: freedomOfSpeechData.asLeader.average.toFixed(2),
+                  isNotLeader:
+                    freedomOfSpeechData.asNotLeader.average.toFixed(2),
                 },
                 {
                   key: "Segurança Psicológica",
                   average: psychologicalSafetyData.average.toFixed(2),
-                  leader: psychologicalSafetyData.leaderAverage.toFixed(2),
+                  leader: psychologicalSafetyData.asLeader.average.toFixed(2),
                   isNotLeader:
-                    psychologicalSafetyData.notLeaderAverage.toFixed(2),
+                    psychologicalSafetyData.asNotLeader.average.toFixed(2),
                 },
                 {
                   key: "Confiança",
                   average: reliabilityData.average.toFixed(2),
-                  leader: reliabilityData.leaderAverage.toFixed(2),
-                  isNotLeader: reliabilityData.notLeaderAverage.toFixed(2),
+                  leader: reliabilityData.asLeader.average.toFixed(2),
+                  isNotLeader: reliabilityData.asNotLeader.average.toFixed(2),
                 },
                 {
                   key: "Aprendizado contínuo",
                   average: continuousLearningData.average.toFixed(2),
-                  leader: continuousLearningData.leaderAverage.toFixed(2),
+                  leader: continuousLearningData.asLeader.average.toFixed(2),
                   isNotLeader:
-                    continuousLearningData.notLeaderAverage.toFixed(2),
+                    continuousLearningData.asNotLeader.average.toFixed(2),
                 },
                 {
                   key: "Autonomia",
                   average: autonomyData.average.toFixed(2),
-                  leader: autonomyData.leaderAverage.toFixed(2),
-                  isNotLeader: autonomyData.notLeaderAverage.toFixed(2),
+                  leader: autonomyData.asLeader.average.toFixed(2),
+                  isNotLeader: autonomyData.asNotLeader.average.toFixed(2),
                 },
                 {
                   key: "Integridade e Coerência",
                   average: integrityAndCoherenceData.average.toFixed(2),
-                  leader: integrityAndCoherenceData.leaderAverage.toFixed(2),
+                  leader: integrityAndCoherenceData.asLeader.average.toFixed(2),
                   isNotLeader:
-                    integrityAndCoherenceData.notLeaderAverage.toFixed(2),
+                    integrityAndCoherenceData.asNotLeader.average.toFixed(2),
                 },
                 {
                   key: "Qualidade de vida",
                   average: qualityOfLife.average.toFixed(2),
-                  leader: qualityOfLife.leaderAverage.toFixed(2),
-                  isNotLeader: qualityOfLife.notLeaderAverage.toFixed(2),
+                  leader: qualityOfLife.asLeader.average.toFixed(2),
+                  isNotLeader: qualityOfLife.asNotLeader.average.toFixed(2),
                 },
               ]}
               keys={["average", "leader", "isNotLeader"]}
               index="key"
               type="grouped"
+              color={["#8bd3c7", "#7eb0d5", "#ffb55a"]}
             />
           </div>
         </div>
@@ -200,44 +213,134 @@ export default function Home() {
               data={[
                 {
                   key: "Liberdade de Expressão",
-                  positiveVotes: freedomOfSpeechData.positiveVotes,
-                  negativeVotes: freedomOfSpeechData.negativeVotes,
+                  total: (
+                    (freedomOfSpeechData.positiveVotes /
+                      freedomOfSpeechData.totalOfVotes) *
+                    100
+                  ).toFixed(0),
+                  leader: (
+                    (freedomOfSpeechData.asLeader.positiveVotes /
+                      freedomOfSpeechData.asLeader.totalOfVotes) *
+                    100
+                  ).toFixed(0),
+                  notLeader: (
+                    (freedomOfSpeechData.asNotLeader.positiveVotes /
+                      freedomOfSpeechData.asNotLeader.totalOfVotes) *
+                    100
+                  ).toFixed(0),
                 },
                 {
                   key: "Segurança Psicológica",
-                  positiveVotes: psychologicalSafetyData.positiveVotes,
-                  negativeVotes: psychologicalSafetyData.negativeVotes,
+                  total: (
+                    (psychologicalSafetyData.positiveVotes /
+                      psychologicalSafetyData.totalOfVotes) *
+                    100
+                  ).toFixed(0),
+                  leader: (
+                    (psychologicalSafetyData.asLeader.positiveVotes /
+                      psychologicalSafetyData.asLeader.totalOfVotes) *
+                    100
+                  ).toFixed(0),
+                  notLeader: (
+                    (psychologicalSafetyData.asNotLeader.positiveVotes /
+                      psychologicalSafetyData.asNotLeader.totalOfVotes) *
+                    100
+                  ).toFixed(0),
                 },
                 {
                   key: "Confiança",
-                  positiveVotes: reliabilityData.positiveVotes,
-                  negativeVotes: reliabilityData.negativeVotes,
+                  total: (
+                    (reliabilityData.positiveVotes /
+                      reliabilityData.totalOfVotes) *
+                    100
+                  ).toFixed(0),
+                  leader: (
+                    (reliabilityData.asLeader.positiveVotes /
+                      reliabilityData.asLeader.totalOfVotes) *
+                    100
+                  ).toFixed(0),
+                  notLeader: (
+                    (reliabilityData.asNotLeader.positiveVotes /
+                      reliabilityData.asNotLeader.totalOfVotes) *
+                    100
+                  ).toFixed(0),
                 },
                 {
                   key: "Aprendizado contínuo",
-                  positiveVotes: continuousLearningData.positiveVotes,
-                  negativeVotes: continuousLearningData.negativeVotes,
+                  total: (
+                    (continuousLearningData.positiveVotes /
+                      continuousLearningData.totalOfVotes) *
+                    100
+                  ).toFixed(0),
+                  leader: (
+                    (continuousLearningData.asLeader.positiveVotes /
+                      continuousLearningData.asLeader.totalOfVotes) *
+                    100
+                  ).toFixed(0),
+                  notLeader: (
+                    (continuousLearningData.asNotLeader.positiveVotes /
+                      continuousLearningData.asNotLeader.totalOfVotes) *
+                    100
+                  ).toFixed(0),
                 },
                 {
                   key: "Autonomia",
-                  positiveVotes: autonomyData.positiveVotes,
-                  negativeVotes: autonomyData.negativeVotes,
+                  total: (
+                    (autonomyData.positiveVotes / autonomyData.totalOfVotes) *
+                    100
+                  ).toFixed(0),
+                  leader: (
+                    (autonomyData.asLeader.positiveVotes /
+                      autonomyData.asLeader.totalOfVotes) *
+                    100
+                  ).toFixed(0),
+                  notLeader: (
+                    (autonomyData.asNotLeader.positiveVotes /
+                      autonomyData.asNotLeader.totalOfVotes) *
+                    100
+                  ).toFixed(0),
                 },
                 {
                   key: "Integridade e Coerência",
-                  positiveVotes: integrityAndCoherenceData.positiveVotes,
-                  negativeVotes: integrityAndCoherenceData.negativeVotes,
+                  total: (
+                    (integrityAndCoherenceData.positiveVotes /
+                      integrityAndCoherenceData.totalOfVotes) *
+                    100
+                  ).toFixed(0),
+                  leader: (
+                    (integrityAndCoherenceData.asLeader.positiveVotes /
+                      integrityAndCoherenceData.asLeader.totalOfVotes) *
+                    100
+                  ).toFixed(0),
+                  notLeader: (
+                    (integrityAndCoherenceData.asNotLeader.positiveVotes /
+                      integrityAndCoherenceData.asNotLeader.totalOfVotes) *
+                    100
+                  ).toFixed(0),
                 },
                 {
                   key: "Qualidade de vida",
-                  positiveVotes: qualityOfLife.positiveVotes,
-                  negativeVotes: qualityOfLife.negativeVotes,
+                  total: (
+                    (qualityOfLife.positiveVotes / qualityOfLife.totalOfVotes) *
+                    100
+                  ).toFixed(0),
+                  leader: (
+                    (qualityOfLife.asLeader.positiveVotes /
+                      qualityOfLife.asLeader.totalOfVotes) *
+                    100
+                  ).toFixed(0),
+                  notLeader: (
+                    (qualityOfLife.asNotLeader.positiveVotes /
+                      qualityOfLife.asNotLeader.totalOfVotes) *
+                    100
+                  ).toFixed(0),
                 },
               ]}
-              keys={["positiveVotes", "negativeVotes"]}
-              color={["#22c55e", "#ef4444"]}
+              keys={["total", "leader", "notLeader"]}
               index="key"
-              type="stacked"
+              type="grouped"
+              color={["#8bd3c7", "#7eb0d5", "#ffb55a"]}
+              format={(v: number) => `${v}%`}
             />
           </div>
         </div>
