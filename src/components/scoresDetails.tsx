@@ -18,6 +18,45 @@ const ScoresDetails = ({
   return (
     <div className="grid grid-cols-1 w-full md:grid-cols-2 gap-2">
       <div className="w-full h-[300px] border p-4">
+        <span className="text-neutral-500">Médias</span>
+        <BarChart
+          data={[
+            {
+              key: "Liberdade de Expressão",
+              value: data.freedomOfSpeechData.average.toFixed(2),
+            },
+            {
+              key: "Segurança Psicológica",
+              value: data.psychologicalSafetyData.average.toFixed(2),
+            },
+            {
+              key: "Confiança",
+              value: data.reliabilityData.average.toFixed(2),
+            },
+            {
+              key: "Aprendizado contínuo",
+              value: data.continuousLearningData.average.toFixed(2),
+            },
+            {
+              key: "Autonomia",
+              value: data.autonomyData.average.toFixed(2),
+            },
+            {
+              key: "Integridade e Coerência",
+              value: data.integrityAndCoherenceData.average.toFixed(2),
+            },
+            {
+              key: "Qualidade de vida",
+              value: data.qualityOfLife.average.toFixed(2),
+            },
+          ]}
+          keys={["value"]}
+          index="key"
+          color={"#8bd3c7"}
+        />
+      </div>
+
+      <div className="w-full h-[300px] border p-4">
         <span className="text-neutral-500">Liberdade de Expressão</span>
         <BarChart
           data={[
