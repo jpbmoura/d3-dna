@@ -20,12 +20,16 @@ export default function Home() {
     <main className="max-w-6xl mx-auto pt-12 px-8 lg:px-0">
       <header className="flex justify-between items-center">
         <h1 className="font-bold text-xl">D3 - DNA</h1>
-        <span className="italic text-neutral-500 text-sm">
-          work in progress
-        </span>
       </header>
 
       <RelationshipSection />
+
+      <section className="my-8 space-y-2">
+        <h2 className="underline text-lg">Valores Organizacionais</h2>
+        <span className="italic text-neutral-500 text-sm">
+          work in progress
+        </span>
+      </section>
     </main>
   );
 }
