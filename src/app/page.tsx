@@ -341,6 +341,46 @@ export default function Home() {
               type="grouped"
               color={["#8bd3c7", "#7eb0d5", "#ffb55a"]}
               format={(v: number) => `${v}%`}
+              markers={{
+                axis: "y",
+                value:
+                  ((freedomOfSpeechData.positiveVotes +
+                    psychologicalSafetyData.positiveVotes +
+                    reliabilityData.positiveVotes +
+                    continuousLearningData.positiveVotes +
+                    autonomyData.positiveVotes +
+                    integrityAndCoherenceData.positiveVotes +
+                    qualityOfLife.positiveVotes) /
+                    (freedomOfSpeechData.totalOfVotes +
+                      psychologicalSafetyData.totalOfVotes +
+                      reliabilityData.totalOfVotes +
+                      continuousLearningData.totalOfVotes +
+                      autonomyData.totalOfVotes +
+                      integrityAndCoherenceData.totalOfVotes +
+                      qualityOfLife.totalOfVotes)) *
+                  100,
+                lineColor: "#000",
+                legend:
+                  "Média Geral: " +
+                  (
+                    ((freedomOfSpeechData.positiveVotes +
+                      psychologicalSafetyData.positiveVotes +
+                      reliabilityData.positiveVotes +
+                      continuousLearningData.positiveVotes +
+                      autonomyData.positiveVotes +
+                      integrityAndCoherenceData.positiveVotes +
+                      qualityOfLife.positiveVotes) /
+                      (freedomOfSpeechData.totalOfVotes +
+                        psychologicalSafetyData.totalOfVotes +
+                        reliabilityData.totalOfVotes +
+                        continuousLearningData.totalOfVotes +
+                        autonomyData.totalOfVotes +
+                        integrityAndCoherenceData.totalOfVotes +
+                        qualityOfLife.totalOfVotes)) *
+                    100
+                  ).toFixed(0) +
+                  "%",
+              }}
             />
           </div>
         </div>

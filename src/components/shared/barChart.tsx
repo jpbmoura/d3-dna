@@ -10,6 +10,7 @@ const BarChart = ({
   legend,
   type,
   format,
+  markers,
 }: {
   data: any;
   keys: string[];
@@ -18,6 +19,12 @@ const BarChart = ({
   legend?: string;
   type?: "grouped" | "stacked";
   format?: any;
+  markers?: {
+    axis: "y" | "x";
+    value: number;
+    lineColor: string;
+    legend: string;
+  };
 }) => {
   return (
     <ResponsiveBar
@@ -33,6 +40,20 @@ const BarChart = ({
       animate={true}
       axisTop={null}
       axisRight={null}
+      markers={
+        markers && [
+          {
+            axis: markers.axis,
+            value: markers.value,
+            lineStyle: {
+              stroke: markers.lineColor,
+              strokeWidth: 1,
+              strokeDasharray: 6,
+            },
+            legend: markers.legend,
+          },
+        ]
+      }
       axisLeft={{
         tickSize: 5,
         tickPadding: 5,
