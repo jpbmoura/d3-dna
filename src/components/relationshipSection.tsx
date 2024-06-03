@@ -91,47 +91,6 @@ const RelationshipSection = () => {
         <h2 className="underline text-lg">Relações</h2>
 
         <div>
-          <span className="text-neutral-500">Média de Votos x Tipo</span>
-          <div className="h-[400px] w-full">
-            <BarChart
-              data={[
-                {
-                  key: "Liberdade de Expressão",
-                  value: freedomOfSpeechData.average.toFixed(2),
-                },
-                {
-                  key: "Segurança Psicológica",
-                  value: psychologicalSafetyData.average.toFixed(2),
-                },
-                {
-                  key: "Confiança",
-                  value: reliabilityData.average.toFixed(2),
-                },
-                {
-                  key: "Aprendizado contínuo",
-                  value: continuousLearningData.average.toFixed(2),
-                },
-                {
-                  key: "Autonomia",
-                  value: autonomyData.average.toFixed(2),
-                },
-                {
-                  key: "Integridade e Coerência",
-                  value: integrityAndCoherenceData.average.toFixed(2),
-                },
-                {
-                  key: "Qualidade de vida",
-                  value: qualityOfLife.average.toFixed(2),
-                },
-              ]}
-              keys={["value"]}
-              index="key"
-              color={"#8bd3c7"}
-            />
-          </div>
-        </div>
-
-        <div>
           <span className="text-neutral-500">
             Média de Votos x Tipo (Média Lider e Não Lider)
           </span>
